@@ -1,0 +1,15 @@
+{
+  "name": "flow-launcher-plugin-ssh-profiles",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^25.8.0",
+    "typescript": "^5.4.0",
+    "vitest": "^3.2.1"
+  }
+}

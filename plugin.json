@@ -1,0 +1,13 @@
+{
+  "$schema": "https://www.flowlauncher.com/schemas/plugin.schema.json",
+  "ID": "920423cc-798a-4595-9e0e-11431569cee6",
+  "ActionKeyword": "ssh",
+  "Name": "SSH Profiles",
+  "Description": "Quickly connect to SSH servers from your ~/.ssh/config via Windows Terminal",
+  "Author": "Hung",
+  "Version": "1.0.0",
+  "Language": "javascript",
+  "Website": "https://github.com/user/flow.launcher.plugin.ssh-profiles",
+  "IcoPath": "Images\\app.png",
+  "ExecuteFileName": "dist\\main.js"
+}
