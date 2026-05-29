@@ -4,7 +4,7 @@
     "ActionKeyword": "ssh",
     "Name": "SSH Profiles",
     "Description": "Quickly connect to SSH servers from your ~/.ssh/config via Windows Terminal",
-    "Author": "Hung",
+    "Author": "HungNth",
     "Version": "1.0.1",
     "Language": "javascript",
     "Website": "https://github.com/user/flow.launcher.plugin.ssh-profiles",
