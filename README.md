@@ -12,15 +12,18 @@
 
 ## Overview
 
-**SSH Profiles** reads profiles from `~/.ssh/config`, shows them directly in Flow Launcher, and opens an SSH session in Windows Terminal when you select a profile.
+**SSH Profiles** reads profiles from `~/.ssh/config`, shows them directly in Flow Launcher, copies the selected SSH command by default, and can still open an SSH session in Windows Terminal on demand.
 
 The plugin currently supports:
 
 - Reading `Host` blocks that define `HostName`.
 - Skipping `Host *` and profiles pointing to `github.com` or `gitlab.com`.
 - Searching by alias, `HostName`, or `User`.
-- Opening profiles with `wt -p "<terminal profile>" -- ssh <alias>`.
+- Copying `ssh <host-alias>` to the clipboard when you select a profile.
+- Showing follow-up actions after profile selection: `Copy to clipboard` and `Open in terminal`.
+- Opening profiles with `wt -p "<terminal profile>" -- ssh <host-alias>` when you choose `Open in terminal`.
 - Opening the SSH config file in VS Code.
+
 
 ## Requirements
 
@@ -72,13 +75,21 @@ Open Flow Launcher and type:
 | `ssh profiles <keyword>` | Search profiles with the `profiles` prefix |
 | `ssh edit` | Open `~/.ssh/config` in VS Code |
 
-Select a result to open Windows Terminal and run:
+Select a profile result to copy this command to the clipboard:
 
 ```powershell
-wt -p "<terminal profile>" -- ssh <host-alias>
+ssh <host-alias>
 ```
 
+Flow Launcher then changes the query to `ssh action <host-alias>` and shows two choices:
+
+| Choice | Description |
+| --- | --- |
+| `Copy to clipboard` | Copy `ssh <host-alias>` again. This is the top/default follow-up choice. |
+| `Open in terminal` | Open Windows Terminal and run `wt -p "<terminal profile>" -- ssh <host-alias>`. |
+
 The plugin automatically chooses a terminal profile in this order: PowerShell 7, Command Prompt, the first Windows Terminal profile, then Windows PowerShell as the fallback.
+
 
 ## Development
 
@@ -96,6 +107,23 @@ Smoke-test the JSON-RPC entry after building:
 ```powershell
 node .\dist\main.js '{"method":"query","parameters":[""],"settings":{}}'
 ```
+
+Smoke-test the follow-up action query after building:
+
+```powershell
+node .\dist\main.js '{"method":"query","parameters":["action prod"],"settings":{}}'
+```
+
+Expected: stdout is valid JSON and the `result` array contains `Copy to clipboard` first and `Open in terminal` second.
+
+Smoke-test profile selection only when replacing the current clipboard is acceptable:
+
+```powershell
+node .\dist\main.js '{"method":"select_profile","parameters":["prod"],"settings":{}}'
+```
+
+Expected: stdout returns `Flow.Launcher.ChangeQuery` with `ssh action prod`, and the clipboard contains `ssh prod`.
+
 
 ## Project Structure
 
