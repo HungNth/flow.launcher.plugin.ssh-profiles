@@ -1,0 +1,23 @@
+{
+  "skill_name": "flow-launcher-nodejs-plugin",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a Flow Launcher plugin in TypeScript named DevDocs Quick. The action keyword is dd. When the user types dd react, show 5 mock documentation results from a local array. Pressing Enter should open the result URL. Include a SettingsTemplate.yaml file that lets users choose Compact or Detailed mode and set the maximum number of results.",
+      "expected_output": "A TypeScript Flow Launcher plugin scaffold with plugin.json, package/build setup, JSON-RPC query dispatcher, settings template, result actions, and local smoke-test guidance.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "My current Flow Launcher Node.js plugin sometimes returns no results because debug text from console.log is mixed into stdout. Fix main.js so the JSON-RPC output is always valid, route logs to stderr, and add a Node.js smoke test command using a query payload.",
+      "expected_output": "A focused bug fix that preserves the existing project, keeps stdout JSON-only, routes diagnostics to stderr, handles errors as Flow-visible results or stderr, and documents/runs a smoke test.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Prepare a JavaScript Flow Launcher plugin for release to the Plugin Store. Create a GitHub Actions workflow that zips the plugin with node_modules, reads Version from plugin.json, and create a Flow.Launcher.PluginsManifest entry with UrlDownload, UrlSourceCode, and a CDN IcoPath.",
+      "expected_output": "Release workflow and store manifest changes that follow Flow Launcher Node.js docs, include runtime dependencies in the zip, tag releases from plugin.json Version, and identify URL/icon placeholders needing real repository values.",
+      "files": []
+    }
+  ]
+}
