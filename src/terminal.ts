@@ -40,6 +40,14 @@ export function buildWtCommand(
 }
 
 /**
+ * Build the plain SSH command copied to the clipboard.
+ */
+export function buildSshCommand(hostAlias: string): string {
+  return `ssh ${hostAlias}`;
+}
+
+
+/**
  * Read Windows Terminal settings.json and return the profile list.
  */
 function readWtProfiles(): WtProfile[] {

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { detectWtProfileName, buildWtCommand } from "../src/terminal";
+import { detectWtProfileName, buildWtCommand, buildSshCommand } from "../src/terminal";
 
 describe("detectWtProfileName", () => {
   it("prefers PowerShell 7", () => {
@@ -41,3 +41,10 @@ describe("buildWtCommand", () => {
     );
   });
 });
+
+describe("buildSshCommand", () => {
+  it("builds the command copied to the clipboard", () => {
+    expect(buildSshCommand("prod")).toBe("ssh prod");
+  });
+});
+
